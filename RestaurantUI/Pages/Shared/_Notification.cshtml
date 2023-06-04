@@ -1,0 +1,8 @@
+﻿@if (TempData["msg"] != null)
+{
+    string? action = TempData["action"] != null ? TempData["action"].ToString() : "";
+    <div class="@(@action=="delete" ? "alert alert-danger alert-dismissible fade show":"alert alert-success alert-dismissible fade show")" role="alert">
+        <strong>@TempData["msg"]</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}

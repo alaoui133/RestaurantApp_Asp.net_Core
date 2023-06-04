@@ -1,0 +1,48 @@
+﻿@page "/restaurantapp"
+@using Restaurant.Models;
+@model RestaurantUI.Pages.Admin.Categories.IndexModel
+
+@{
+    ViewBag.groupePage = "Administaration";
+    ViewBag.title = "Categories List";
+}
+
+@*<partial name="_Notification" />*@
+
+<div class="p-1">
+    <div class="col-12">
+        <a class="btn btn-outline-primary mt-1 mb-2 p-1" asp-page="Create">
+            <i class="fa-solid fa-circle-plus fa-spin"></i> New Category
+        </a>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model=> model.Categories.ElementAt(0).Name)</th>
+                    <th>@Html.DisplayNameFor(model=> model.Categories.ElementAt(0).DisplayOrder)</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (Category catg in Model.Categories)
+                {
+                    <tr>
+                        <td>@catg.Name</td>
+                        <td>@catg.DisplayOrder</td>
+                        <td>
+                            <div class="w-100 btn-group" role="group" aria-label="Basic example">
+                                <a asp-page="Edit" asp-route-id="@catg.Id" class="btn btn-outline-info">
+                                    <i class="fa-solid fa-pencil fa-lg" style="color:deepskyblue"></i>
+                                </a>
+                                <a asp-page="Delete" asp-route-id="@catg.Id" class="btn btn-outline-info">
+                                    <i class="fa-solid fa-trash fa-lg" style="color:red"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

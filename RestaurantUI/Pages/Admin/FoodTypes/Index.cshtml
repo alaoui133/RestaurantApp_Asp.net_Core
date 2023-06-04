@@ -1,0 +1,46 @@
+﻿@page 
+@using Restaurant.Models;
+@model RestaurantUI.Pages.Admin.FoodTypes.IndexModel
+
+@{
+    ViewBag.groupePage = "Administaration";
+    ViewBag.title = "Food Type List";
+}
+
+@*<partial name="_Notification" />*@
+
+<div class="p-1">
+    <div class="col-12">
+        <a class="btn btn-outline-primary mt-1 mb-2 p-1" asp-page="Create">
+            <i class="fa-solid fa-circle-plus fa-spin"></i> New Food Type
+        </a>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model=> model.FoodTypes.ElementAt(0).FoodTypeName)</th>
+                    
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (FoodType foodType in Model.FoodTypes)
+                {
+                    <tr>
+                        <td>@foodType.FoodTypeName</td>
+                        <td>
+                            <div class="w-100 btn-group" role="group" aria-label="Basic example">
+                                <a asp-page="Edit" asp-route-id="@foodType.FoodTypeId" class="btn btn-outline-info">
+                                    <i class="fa-solid fa-pencil fa-lg" style="color:deepskyblue"></i>
+                                </a>
+                                <a asp-page="Delete" asp-route-id="@foodType.FoodTypeId" class="btn btn-outline-info">
+                                    <i class="fa-solid fa-trash fa-lg" style="color:red"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

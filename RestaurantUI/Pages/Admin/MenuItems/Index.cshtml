@@ -1,0 +1,141 @@
+﻿@page
+@using Restaurant.Models;
+@model RestaurantUI.Pages.Admin.MenuItems.IndexModel
+
+@{
+    ViewBag.groupePage = "Administaration";
+    ViewBag.title = "Menu Item List";
+}
+
+@*<partial name="_Notification" />*@
+
+<div class="p-1">
+    <div class="col-12">
+        <a class="btn btn-outline-primary mt-1 mb-2 p-1" asp-page="AddOrEdit">
+            <i class="fa-solid fa-circle-plus fa-spin"></i> Create
+        </a>
+        <table id="DtMenuItems" class="w-100 table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model=> model.menuItems.ElementAt(0).Name)</th>
+                    <th>@Html.DisplayNameFor(model=> model.menuItems.ElementAt(0).Description)</th>
+                    <th>@Html.DisplayNameFor(model=> model.menuItems.ElementAt(0).Price)</th>
+                    <th>@Html.DisplayNameFor(model=> model.menuItems.ElementAt(0).CategoryId)</th>
+                    <th>@Html.DisplayNameFor(model=> model.menuItems.ElementAt(0).FoodTypeId)</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript">
+        var datatable;
+        $(document).ready(function () {
+            
+            datatable = $('#DtMenuItems').DataTable({
+                "ajax": {
+                    "url": "?handler=List",
+                    "type": "GET",
+                    "datatype": "json",
+                },
+                "columns": [
+                    { "data": "name" },
+                    { "data": "description" },
+                    { "data": "price" },
+                    { "data": "category.name" },
+                    { "data": "foodType.foodTypeName" },
+                    {
+                        "data": "id", "render": function (data)// data is the id
+                        {
+                            return `
+
+                                         <div class="w-100 btn-group" role="group" aria-label="Basic example">
+                                           <a href="/Admin/MenuItems/AddOrEdit?id=${data}"  class="btn btn-outline-info">
+                                             <i class="fa-solid fa-pencil fa-lg" style="color:deepskyblue"></i>
+                                           </a>
+                                             <a onClick="DeleteConfirm(${data})"  class="btn btn-outline-info">
+                                               <i class="fa-solid fa-trash fa-lg" style="color:red"></i>
+                                            </a>
+                                        </div>
+
+                                     `
+
+                        }//href="/Admin/MenuItems/AddOrEdit?Handler=Delete&id=${data}"
+                    }
+
+                ]
+            });
+
+
+            
+        });
+
+        function DeleteConfirm(id) {
+            let urlHandler = "/Admin/MenuItems/AddOrEdit?Handler=Delete&id=" + id;
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        url: urlHandler,
+                        type: "GET",
+                        success: function (data) {
+                            if (data != null) {
+                                datatable.ajax.reload();
+                                swalWithBootstrapButtons.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+
+                                
+
+                            }
+
+                        }// end function success
+
+                    }); // end ajax
+                   
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Your imaginary file is safe :)',
+                        'error'
+                    )
+                }
+            })
+
+            
+
+
+        } // end function
+
+    </script>
+}

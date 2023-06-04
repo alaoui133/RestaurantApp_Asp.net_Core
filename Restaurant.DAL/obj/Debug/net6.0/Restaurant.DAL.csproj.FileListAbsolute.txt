@@ -1,0 +1,17 @@
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\bin\Debug\net6.0\Restaurant.DAL.deps.json
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\bin\Debug\net6.0\Restaurant.DAL.runtimeconfig.json
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\bin\Debug\net6.0\Restaurant.DAL.dll
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\bin\Debug\net6.0\Restaurant.DAL.pdb
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\bin\Debug\net6.0\Restaurant.Models.dll
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\bin\Debug\net6.0\Restaurant.Models.pdb
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\Restaurant.DAL.csproj.AssemblyReference.cache
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\Restaurant.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\Restaurant.DAL.AssemblyInfoInputs.cache
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\Restaurant.DAL.AssemblyInfo.cs
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\Restaurant.DAL.csproj.CoreCompileInputs.cache
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\Restaurant.DAL.csproj.CopyComplete
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\Restaurant.DAL.dll
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\refint\Restaurant.DAL.dll
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\Restaurant.DAL.pdb
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\Restaurant.DAL.genruntimeconfig.cache
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\ref\Restaurant.DAL.dll

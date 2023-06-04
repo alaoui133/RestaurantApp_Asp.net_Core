@@ -1,0 +1,38 @@
+﻿@page
+@model RestaurantUI.Pages.Admin.FoodTypes.CreateModel
+
+@{
+    ViewBag.groupePage = "Administaration";
+    ViewBag.title = "Create Food Type";
+}
+
+<div class="card border-danger">
+    <div class="card-header">
+        New Food Type
+    </div>
+    <div class="card-body">
+      
+        <form asp-action="Post">
+            <div asp-validation-summary="All" class="mt-2 mb-2 text-danger"></div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="foodType.FoodTypeName">@Html.DisplayNameFor(model=>model.foodType.FoodTypeName)</label>
+                <input type="text" class="form-control" asp-for="foodType.FoodTypeName" />
+                <span asp-validation-for="foodType.FoodTypeName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa-solid fa-floppy-disk"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+     }*@
+
+

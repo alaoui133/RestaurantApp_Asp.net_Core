@@ -1,0 +1,96 @@
+﻿@page
+@model RestaurantUI.Pages.Admin.MenuItems.AddOrEditModel
+
+@{
+    ViewBag.groupePage = "Administaration";
+    ViewBag.title = (Model.MenuItems.Id == 0 ? "New MenuItem" : "Edit MenuItem");
+}
+
+<div class="card border-danger">
+    <div class="card-header">
+        @(Model.MenuItems.Id == 0 ? "New MenuItem" : "Edit MenuItem")
+    </div>
+
+    <div class="row">
+        <div class="col-8">
+            <div class="card-body">
+
+                <form asp-action="Post" enctype="multipart/form-data">
+                    <div asp-validation-summary="All" class="mt-2 mb-2 text-danger"></div>
+                    <input type="hidden" asp-for="MenuItems.Id" />
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="MenuItems.Name">@Html.DisplayNameFor(model=>model.MenuItems.Name)</label>
+                        <input type="text" class="form-control" asp-for="MenuItems.Name" />
+                        <span asp-validation-for="MenuItems.Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="MenuItems.Description">@Html.DisplayNameFor(model=>model.MenuItems.Description)</label>
+                        <textarea class="form-control" asp-for="MenuItems.Description"> </textarea>
+                        <span asp-validation-for="MenuItems.Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="MenuItems.Price">@Html.DisplayNameFor(model=>model.MenuItems.Price)</label>
+                        <input type="number" class="form-control" asp-for="MenuItems.Price" />
+                        <span asp-validation-for="MenuItems.Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="MenuItems.ImageUrl">@Html.DisplayNameFor(model=>model.MenuItems.ImageUrl)</label>
+                        <input type="file" name="files" id="uploadBox" class="form-control" asp-for="MenuItems.ImageUrl" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="MenuItems.ImageUrl">@Html.DisplayNameFor(model=>model.MenuItems.CategoryId)</label>
+                        <select asp-for="MenuItems.CategoryId" asp-items="Model.CategoryList" class="form-control">
+                            <option disabled selected>-- Select a Category --</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="MenuItems.ImageUrl">@Html.DisplayNameFor(model=>model.MenuItems.FoodTypeId)</label>
+                        <select asp-for="MenuItems.FoodTypeId" asp-items="Model.FoodTypeList" class="form-control">
+                            <option disabled selected>-- Select a Food Type --</option>
+
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fa-solid fa-floppy-disk"></i> 
+                            @(Model.MenuItems.Id==0 ? "Create" : "Update")
+
+                        </button>
+                        <a asp-page="Index" class="btn btn-secondary">
+                            <i class="fa-solid fa-house"></i> Back to List
+                        </a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card border-danger mt-3">
+                <div class="card-header">
+                    <label class="form-label" asp-for="MenuItems.ImageUrl">@Html.DisplayNameFor(model=>model.MenuItems.ImageUrl)</label>
+                </div>
+                <div class="card-body">
+                    @if (Model.MenuItems.ImageUrl != null)
+                    {
+                        <img src="@Model.MenuItems.ImageUrl" width="100%" style="border-radius:10px;" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@*@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+     }*@
+
+

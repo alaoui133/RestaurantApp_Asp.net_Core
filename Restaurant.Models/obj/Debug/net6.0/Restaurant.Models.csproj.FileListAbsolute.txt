@@ -1,0 +1,12 @@
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\bin\Debug\net6.0\Restaurant.Models.deps.json
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\bin\Debug\net6.0\Restaurant.Models.dll
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\bin\Debug\net6.0\Restaurant.Models.pdb
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\obj\Debug\net6.0\Restaurant.Models.csproj.AssemblyReference.cache
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\obj\Debug\net6.0\Restaurant.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\obj\Debug\net6.0\Restaurant.Models.AssemblyInfoInputs.cache
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\obj\Debug\net6.0\Restaurant.Models.AssemblyInfo.cs
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\obj\Debug\net6.0\Restaurant.Models.csproj.CoreCompileInputs.cache
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\obj\Debug\net6.0\Restaurant.Models.dll
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\obj\Debug\net6.0\refint\Restaurant.Models.dll
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\obj\Debug\net6.0\Restaurant.Models.pdb
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.Models\obj\Debug\net6.0\ref\Restaurant.Models.dll

@@ -1,0 +1,46 @@
+﻿@page "/restaurantapp/edit"
+@model RestaurantUI.Pages.Admin.Categories.EditModel
+
+@{
+    ViewBag.groupePage = "Administaration";
+    ViewBag.title = "Edit Categories";
+}
+
+<div class="card border-danger">
+    <div class="card-header">
+        Edit
+    </div>
+    <div class="card-body">
+      
+        <form asp-action="Post">
+            <input type="hidden" asp-for="Categ.Id" />
+            <div asp-validation-summary="All" class="mt-2 mb-2 text-danger"></div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Categ.Name">@Html.DisplayNameFor(model=>model.Categ.Name)</label>
+                <input type="text" class="form-control" asp-for="Categ.Name" />
+                <span asp-validation-for="Categ.Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" asp-for="Categ.DisplayOrder">@Html.DisplayNameFor(model=>model.Categ.DisplayOrder)</label>
+                <input type="number" class="form-control" asp-for="Categ.DisplayOrder" />
+                <span asp-validation-for="Categ.DisplayOrder" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa-solid fa-floppy-info"></i> Update  
+                </button>
+                <a asp-page="Index" class="btn btn-secondary">Back to list</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+     }*@
+
+

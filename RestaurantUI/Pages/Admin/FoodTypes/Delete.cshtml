@@ -1,0 +1,38 @@
+﻿@page 
+@model RestaurantUI.Pages.Admin.FoodTypes.DeleteModel
+
+@{
+    ViewBag.groupePage = "Administaration";
+    ViewBag.title = "Delete Food Type";
+}
+
+<div class="card border-danger">
+    <div class="card-header">
+        Delete
+    </div>
+    <div class="card-body">
+      
+        <form asp-action="Post">
+            <input type="hidden" asp-for="foodType.FoodTypeId" />
+            <div class="mb-3">
+                <label class="form-label" asp-for="foodType.FoodTypeName">@Html.DisplayNameFor(model=>model.foodType.FoodTypeName)</label>
+                <input type="text" class="form-control" asp-for="foodType.FoodTypeName" disabled />
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa-solid fa-trash fa-lg"></i> Delete
+                </button>
+                <a asp-page="Index" class="btn btn-secondary">Back to list</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+     }*@
+
+
