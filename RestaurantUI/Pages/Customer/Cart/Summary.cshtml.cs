@@ -10,9 +10,10 @@ namespace RestaurantUI.Pages.Customer.Cart
     [Authorize]
     public class SummaryModel : PageModel
     {
+        public readonly IUnitOfWork _UnitOfWork;
+
         [BindProperty]
         public Order Order { get; set; }
-        public readonly IUnitOfWork _UnitOfWork;
         public IEnumerable<ShoppingCart> ShoppingCartList { get; set; }
 
         public SummaryModel( IUnitOfWork unitOfWork)
@@ -27,8 +28,8 @@ namespace RestaurantUI.Pages.Customer.Cart
             {
                 ShoppingCartList = await _UnitOfWork.ShoppingCartRepo.GetAll(
                     
-                    filter: u=>u.UserId == UserId ,
-                    includeProperties: "ApplicationUser,MenuItem,MenuItem.Category,MenuItem.FoodType"
+                    filter: u =>u.UserId == UserId ,
+                    includeProperties: "ApplicationUser,MenuItem"
                     );
 
                 foreach (var cart in ShoppingCartList)
