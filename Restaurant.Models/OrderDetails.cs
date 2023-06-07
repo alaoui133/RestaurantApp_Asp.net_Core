@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Restaurant.Models
 {
@@ -15,5 +11,19 @@ namespace Restaurant.Models
         [ForeignKey("OrderId")]
         [ValidateNever]
         public Order Order { get; set; }
+
+
+        [Required]
+        public int MenuItemId { get; set; }
+        [ForeignKey("MenuItemId")]
+        public MenuItem MenuItem { get; set; }
+
+        [Required]
+        public int Count { get; set; }
+
+        [Required]
+        public double Price { get; set; }
+
+        public string? Name { get; set; }
     }
 }

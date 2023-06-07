@@ -12,6 +12,10 @@ namespace Restaurant.DAL.Implimentation
 
         public IShoppingCartRepository ShoppingCartRepo { get; private set; }
 
+        public IOrderRepository OrderRepo { get; private set; }
+
+        public IOrderDetailsRepository OrderDetailsRepo { get; private set; }
+
         private readonly RestaurantDBContext _db;
         public UnitOfWork(RestaurantDBContext db)
         {
@@ -20,6 +24,8 @@ namespace Restaurant.DAL.Implimentation
             FoodTypeRepo = new FoodTypeRepository(_db);
             MenuItemRepo = new MenuItemRepository(_db);
             ShoppingCartRepo = new ShoppingCartRepository(_db);
+            OrderRepo = new OrderRepository(_db);
+            OrderDetailsRepo = new OrderDetailsRepository(_db);
 
         }
         public void Dispose()

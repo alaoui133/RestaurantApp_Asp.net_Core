@@ -2,10 +2,11 @@
 
 namespace Restaurant.DAL.Interfaces
 {
-    public interface IMenuItemRepository : IRepository<MenuItem>
+    public interface IOrderRepository : IRepository<Order>
     {
-        void update(MenuItem menuItem); 
+        void update(Order order); 
         
+
 
 
     }

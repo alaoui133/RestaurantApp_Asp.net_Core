@@ -6,6 +6,8 @@
         IFoodTypeRepository FoodTypeRepo { get; }
         IMenuItemRepository MenuItemRepo { get; }
         IShoppingCartRepository ShoppingCartRepo { get; }
+        IOrderRepository OrderRepo { get; }
+        IOrderDetailsRepository OrderDetailsRepo { get; }
         Task<bool> Save();
     }
 }

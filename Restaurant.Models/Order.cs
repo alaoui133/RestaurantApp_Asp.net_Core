@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Restaurant.Models
 {
@@ -26,10 +21,10 @@ namespace Restaurant.Models
         public double OrderTotal { get; set; }
 
         [Required]
-        [Display(Name = "Order Date")]
+        [Display(Name = "Pickup Date")]
         public DateTime PickUpDate { get; set; }
         [Required]
-        [Display(Name = "Order Time")]
+        [Display(Name = "Pickup Time")]
         public DateTime PickUpTime { get; set; }
 
         public string Status { get; set; }  
@@ -41,12 +36,12 @@ namespace Restaurant.Models
         public string? PaymentIntentId { get; set; }    // from stripe
 
         [Required]
-        [Display(Name = "Order Name")]
-        public string? PickUpName { get; set; }
+        [Display(Name = "Pickup Name")]
+        public string PickUpName { get; set; }
 
         [Required]
-        [Display(Name = "Order Number")]
-        public string? PhoneNumber { get; set; }
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
 
 
 
