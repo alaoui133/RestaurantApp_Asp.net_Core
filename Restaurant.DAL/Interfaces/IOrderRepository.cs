@@ -7,7 +7,5 @@ namespace Restaurant.DAL.Interfaces
         void update(Order order); 
         
 
-
-
     }
 }
