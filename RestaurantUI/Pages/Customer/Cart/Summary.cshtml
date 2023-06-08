@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="Order.PickUpName" class="form-control" />
-                                        <span  class="text-danger"></span>
+                                        <span class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="row my-1">
@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="Order.PhoneNumber" class="form-control" />
-                                        <span  class="text-danger"></span>
+                                        <span class="text-danger"></span>
 
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="Order.OrderDate" value="" type="date" class="form-control" />
-                                        <span  class="text-danger"></span>
+                                        <span class="text-danger"></span>
 
                                     </div>
                                 </div>
@@ -60,8 +60,8 @@
                                         <label>Pickup Time</label>
                                     </div>
                                     <div class="col-9">
-                                        <input asp-for="Order.PickUpTime"  value="" type="time" class="form-control" />
-                                        <span  class="text-danger"></span>
+                                        <input asp-for="Order.PickUpTime" value="" type="time" class="form-control" />
+                                        <span class="text-danger"></span>
 
                                     </div>
                                 </div>
@@ -80,19 +80,22 @@
                                     <span class="text-info">Order Summary:</span>
                                 </h4>
                                 <ul class="list-group mb-3">
-                                    
-                                    
+
+                                    @foreach (var detail in Model.ShoppingCartList)
+                                    {
                                         <li class="list-group-item d-flex justify-content-between">
                                             <div>
-                                                <h6 class="my-0"></h6>
-                                                <small class="text-muted"></small>
+                                                <h6 class="my-0">@detail.MenuItem.Name</h6>
+                                                <small class="text-muted">@detail.Count</small>
                                             </div>
-                                            <span class="text-muted"></span>
+                                            <span class="text-muted">@detail.MenuItem.Price * @detail.Count</span>
                                         </li>
-                                    
+
+                                    }
+
                                     <li class="list-group-item d-flex justify-content-between bg-light">
                                         <small class="text-info">Total (USD)</small>
-                                        <strong class="text-info">$ </strong>
+                                        <strong class="text-info">$ @Model.Order.OrderTotal </strong>
                                     </li>
 
                                 </ul>

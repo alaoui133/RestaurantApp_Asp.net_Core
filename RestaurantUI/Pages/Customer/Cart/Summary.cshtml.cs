@@ -34,7 +34,7 @@ namespace RestaurantUI.Pages.Customer.Cart
 
                 foreach (var cart in ShoppingCartList)
                 {
-                    Order.OrderTotal += (cart.MenuItem.Price + cart.Count);
+                    Order.OrderTotal += (cart.MenuItem.Price * cart.Count);
                 }
 
                 ApplicationUser AppUser = ShoppingCartList.First().ApplicationUser;
