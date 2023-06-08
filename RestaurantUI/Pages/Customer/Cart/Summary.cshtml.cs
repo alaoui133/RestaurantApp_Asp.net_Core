@@ -14,7 +14,7 @@ namespace RestaurantUI.Pages.Customer.Cart
 
         [BindProperty]
         public Order Order { get; set; }
-        public IEnumerable<ShoppingCart> ShoppingCartList { get; set; }
+        public IEnumerable<ShoppingCart>? ShoppingCartList { get; set; }
 
         public SummaryModel( IUnitOfWork unitOfWork)
         {
