@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NToastNotify;
 using Restaurant.DAL.Interfaces;
 using Restaurant.Models;
 using System.Security.Claims;
@@ -13,11 +14,14 @@ namespace RestaurantUI.Pages.Customer.Cart
         private readonly IUnitOfWork _unitOfWork;
         public IEnumerable<ShoppingCart> ShoppingCartList { get; set; }
         public double CartTotal { get; set; }
+        private readonly IToastNotification _notify;
+        public bool IsClicked=false;
 
-        public IndexModel(IUnitOfWork unitOfWork)
+        public IndexModel(IUnitOfWork unitOfWork , IToastNotification notify)
         {
             _unitOfWork = unitOfWork;
             CartTotal = 0;
+            _notify = notify;
         }
         public async Task OnGet()
         {
@@ -34,7 +38,11 @@ namespace RestaurantUI.Pages.Customer.Cart
                     CartTotal += (item.Count * item.MenuItem.Price);
                 }
             }
-
+            //if (id==0)
+            //{
+            //    _notify.AddErrorToastMessage("Shopping Cart is Empty!! ");
+            //}
+        
         }
 
         public async Task<IActionResult> OnPostPlus(int cartID)

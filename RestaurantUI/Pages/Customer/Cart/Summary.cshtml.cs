@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NToastNotify;
 using Restaurant.DAL.Interfaces;
 using Restaurant.Models;
 using Restaurant.Utilitiy;
@@ -16,11 +17,14 @@ namespace RestaurantUI.Pages.Customer.Cart
         [BindProperty]
         public Order Order { get; set; }
         public IEnumerable<ShoppingCart> ShoppingCartList { get; set; }
+        private readonly IToastNotification _notify;
+        public bool status = false;
 
-        public SummaryModel( IUnitOfWork unitOfWork)
+        public SummaryModel( IUnitOfWork unitOfWork , IToastNotification notify)
         {
             _UnitOfWork = unitOfWork;
             Order = new Order();
+            _notify = notify;
         }
         public async Task OnGet()
         {
@@ -88,11 +92,19 @@ namespace RestaurantUI.Pages.Customer.Cart
                     };
 
                     await _UnitOfWork.OrderDetailsRepo.add(orderDetails);
-                   
+
                 }
-                   _UnitOfWork.ShoppingCartRepo.removeRange(ShoppingCartList);
-                    await _UnitOfWork.Save();
+                _UnitOfWork.ShoppingCartRepo.removeRange(ShoppingCartList);
+                await _UnitOfWork.Save();
+                 _notify.AddSuccessToastMessage("Order Added Successfully");
+                
+
+
+
             }
+          
+
+            
         }
     }
 }

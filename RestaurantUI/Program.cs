@@ -29,6 +29,11 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<RestaurantDBContext>()
     .AddDefaultTokenProviders();
 
+
+// Stripe
+
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+
 // Login before using Authorize pages
 builder.Services.ConfigureApplicationCookie(option =>
 {
