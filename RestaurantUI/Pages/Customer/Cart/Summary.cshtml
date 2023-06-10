@@ -1,6 +1,8 @@
 ﻿@page
+@using Microsoft.Extensions.Options;
 @using Restaurant.Utilitiy
 @model RestaurantUI.Pages.Customer.Cart.SummaryModel
+@inject IOptions<StripeSettings> Stripe
 @{
 }
 <form method="post">
@@ -42,7 +44,7 @@
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="Order.PhoneNumber" class="form-control" />
-                                        <span asp-validation-for="Order.PhoneNumber"  class="text-danger"></span>
+                                        <span asp-validation-for="Order.PhoneNumber" class="text-danger"></span>
 
                                     </div>
                                 </div>
@@ -62,7 +64,7 @@
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="Order.PickUpTime" value="" type="time" class="form-control" />
-                                        <span asp-validation-for="Order.PickUpTime"  class="text-danger"></span>
+                                        <span asp-validation-for="Order.PickUpTime" class="text-danger"></span>
 
                                     </div>
                                 </div>
@@ -119,6 +121,8 @@
 @section Scripts{
 
     @{
+        <script src="https://js.stripe.com/v3/"></script>
+
         <partial name="_ValidationScriptsPartial" />
-     }
+    }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hisLsjrDOItSRgrecOhHdwNtwU86ZYBsw4lytjihRVPPf+WZOgMnv9rpv1XxE4Y/26N+ZWwtV3eCAJlekz1lZQ==",
+  "dgSpecHash": "jfI05EsRE/fvMTAmHfiWDxfHDKQQiYLo5rpcLdA3t0Fj/8ILMU6NweH0sW+2K/aZ30ev6ANX1NeRa2gPkwz+Ug==",
   "success": true,
   "projectFilePath": "C:\\Users\\lenovo x260 N8\\source\\repos\\RestaurantApp\\RestaurantUI\\RestaurantUI.csproj",
   "expectedPackageFiles": [
@@ -142,6 +142,7 @@
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\stripe.net\\41.20.0\\stripe.net.41.20.0.nupkg.sha512",
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

@@ -580,3 +580,4 @@ C:\Users\lenovo x260 N8\source\repos\RestaurantApp\RestaurantUI\obj\Debug\net6.0
 C:\Users\lenovo x260 N8\source\repos\RestaurantApp\RestaurantUI\obj\Debug\net6.0\RestaurantUI.pdb
 C:\Users\lenovo x260 N8\source\repos\RestaurantApp\RestaurantUI\obj\Debug\net6.0\RestaurantUI.genruntimeconfig.cache
 C:\Users\lenovo x260 N8\source\repos\RestaurantApp\RestaurantUI\obj\Debug\net6.0\ref\RestaurantUI.dll
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\RestaurantUI\bin\Debug\net6.0\Stripe.net.dll
