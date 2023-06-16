@@ -9,9 +9,9 @@ namespace RestaurantUI.Pages.Admin.Orders
     {
         private readonly IUnitOfWork _unitOfWork;
         public IEnumerable<Order> orderList { get; set; }
-        public OrderListModel(IUnitOfWork _unitOfWork)
+        public OrderListModel(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = _unitOfWork;
+            _unitOfWork = unitOfWork;
 
         }
         public void OnGet()

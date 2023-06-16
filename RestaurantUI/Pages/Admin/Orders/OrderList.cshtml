@@ -2,18 +2,18 @@
 @model RestaurantUI.Pages.Admin.Orders.OrderListModel
 @{
     ViewBag.groupePage = "Administaration";
-    ViewBag.title = "Menu Item List";
+    ViewBag.title = "Order List";
 }
 <div class="p-1">
     <div class="col-12">
-        <a class="btn btn-outline-primary mt-1 mb-2 p-1" asp-page="AddOrEdit">
+        <a class="btn btn-outline-primary mt-1 mb-2 p-1" asp-page="">
             <i class="fa-solid fa-circle-plus fa-spin"></i> Create
         </a>
         <table id="DtMenuItems" class="w-100 table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(model=> model.orderList.ElementAt(0).Id)</th>
-                    <th>@Html.DisplayNameFor(model=> model.orderList.ElementAt(0).PickUpDate)</th>
+                    <th>@Html.DisplayNameFor(model=> model.orderList.ElementAt(0).PickUpName)</th>
                     <th>@Html.DisplayNameFor(model=> model.orderList.ElementAt(0).ApplicationUser.Email)</th>
                     <th>@Html.DisplayNameFor(model=> model.orderList.ElementAt(0).ApplicationUser.PhoneNumber)</th>
                     <th>@Html.DisplayNameFor(model=> model.orderList.ElementAt(0).OrderTotal)</th>
@@ -36,6 +36,7 @@
         $(document).ready(function () {
 
             datatable = $('#DtMenuItems').DataTable({
+                
                 "ajax": {
                     "url": "?handler=List",
                     "type": "GET",
@@ -43,18 +44,18 @@
                 },
                 "columns": [
                     { "data": "id" },
-                    { "data": "pickUpDate" },
+                    { "data": "pickUpName" },
                     { "data": "applicationUser.email" },
                     { "data": "applicationUser.phoneNumber" },
                     { "data": "orderTotal" },
-                    { "data": "status" }
+                    { "data": "status" },
                     {
-                        "data": "id", "render": function (data)// data is the id
+                        "data": 'id', "render": function (data)// data is the id
                         {
                             return `
 
                                                  <div class="w-100 btn-group" role="group" aria-label="Basic example">
-                                                   <a href="/Admin/MenuItems/AddOrEdit?id=${data}"  class="btn btn-outline-info">
+                                                   <a  class="btn btn-outline-info">
                                                      <i class="fa-solid fa-pencil fa-lg" style="color:deepskyblue"></i>
                                                    </a>
                                                
@@ -75,4 +76,5 @@
        
 
     </script>
+
 }
