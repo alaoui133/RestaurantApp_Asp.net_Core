@@ -44,8 +44,8 @@
                 "columns": [
                     { "data": "id" },
                     { "data": "pickUpDate" },
-                    { "data": "applicationUser.Email" },
-                    { "data": "applicationUser.PhoneNumber" },
+                    { "data": "applicationUser.email" },
+                    { "data": "applicationUser.phoneNumber" },
                     { "data": "orderTotal" },
                     { "data": "status" }
                     {
@@ -57,9 +57,7 @@
                                                    <a href="/Admin/MenuItems/AddOrEdit?id=${data}"  class="btn btn-outline-info">
                                                      <i class="fa-solid fa-pencil fa-lg" style="color:deepskyblue"></i>
                                                    </a>
-                                                     <a onClick="DeleteConfirm(${data})"  class="btn btn-outline-info">
-                                                       <i class="fa-solid fa-trash fa-lg" style="color:red"></i>
-                                                    </a>
+                                               
                                                 </div>
 
                                              `
@@ -74,65 +72,7 @@
 
         });
 
-        function DeleteConfirm(id) {
-            let urlHandler = "/Admin/MenuItems/AddOrEdit?Handler=Delete&id=" + id;
-
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-success',
-                    cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: false
-            })
-
-
-            swalWithBootstrapButtons.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-
-                    $.ajax({
-                        url: urlHandler,
-                        type: "GET",
-                        success: function (data) {
-                            if (data != null) {
-                                datatable.ajax.reload();
-                                swalWithBootstrapButtons.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
-                                    'success'
-                                )
-
-
-
-                            }
-
-                        }// end function success
-
-                    }); // end ajax
-
-                } else if (
-                    /* Read more about handling dismissals below */
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    swalWithBootstrapButtons.fire(
-                        'Cancelled',
-                        'Your imaginary file is safe :)',
-                        'error'
-                    )
-                }
-            })
-
-
-
-
-        } // end function
+       
 
     </script>
 }

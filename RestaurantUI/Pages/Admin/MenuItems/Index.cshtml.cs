@@ -22,6 +22,7 @@ namespace RestaurantUI.Pages.Admin.MenuItems
         {
             menuItems = await _unitOfWork.MenuItemRepo.GetAll(null,"Category,FoodType");
             return new JsonResult(new {data = menuItems });
+           
         }
     }
 }
