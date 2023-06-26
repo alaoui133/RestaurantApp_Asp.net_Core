@@ -16,15 +16,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-//Add service DbContext
+//Add Connection String
+
 string strCon = builder.Configuration.GetConnectionString("RestaurantStrCon");
+
+//Add service DbContext
+
 builder.Services.AddDbContext<RestaurantDBContext>(options => options.UseSqlServer(strCon));
 //// Identitiy
 //builder.Services.AddDefaultIdentity<IdentityUser>()
 //    .AddEntityFrameworkStores<RestaurantDBContext>();
 
 
-// Identitiy after I Add ApplicationUser => 
+// Identitiy after I Add ApplicationUser Class  => 
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<RestaurantDBContext>()
