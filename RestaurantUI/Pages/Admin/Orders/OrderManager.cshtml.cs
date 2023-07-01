@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Restaurant.DAL.Interfaces;
@@ -7,6 +8,7 @@ using Restaurant.Utilitiy;
 
 namespace RestaurantUI.Pages.Admin.Orders
 {
+    [Authorize(Roles =$"{ConstRoleDef.ManagerRole},{ConstRoleDef.KitchenRole}")]
     public class OrderManagerModel : PageModel
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -33,6 +35,26 @@ namespace RestaurantUI.Pages.Admin.Orders
                 };
                 OrderDetailsViewModelList.Add(ordVM);
             }
+        }
+        public async Task<IActionResult> OnPostOrderStart(int OrderId)
+        {
+            _unitOfWork.OrderRepo.UpdateStatus(OrderId, ConstRoleDef.StatusInProcess);
+            await _unitOfWork.Save();
+            return RedirectToPage("OrderManager");
+        }
+
+        public async Task<IActionResult> OnPostOrderReady(int OrderId)
+        {
+            _unitOfWork.OrderRepo.UpdateStatus(OrderId, ConstRoleDef.StatusReady);
+            await _unitOfWork.Save();
+            return RedirectToPage("OrderManager");
+        }
+
+        public async Task<IActionResult> OnPostOrderCancel(int OrderId)
+        {
+            _unitOfWork.OrderRepo.UpdateStatus(OrderId, ConstRoleDef.StatusCancelled);
+            await _unitOfWork.Save();
+            return RedirectToPage("OrderManager");
         }
     }
 }

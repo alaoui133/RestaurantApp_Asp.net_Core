@@ -1,4 +1,5 @@
 ﻿@page
+@using Restaurant.Utilitiy;
 @model RestaurantUI.Pages.Admin.Orders.OrderDetailsModel
 @{
 }
@@ -99,15 +100,22 @@
 
                 </ul>
 
-             
+                @if (Model.OrderDetailsVm.order.Status == ConstRoleDef.StatusReady
+                && (User.IsInRole(ConstRoleDef.ManagerRole) || User.IsInRole(ConstRoleDef.FrontDeskRole)))
+                {
                     <button type="submit" class="btn btn-info form-control"
                         asp-page-handler="OrderConplete" asp-route-OrderId="@Model.OrderDetailsVm.order.Id">
                         <i class="fa-solid fa-check-double"></i>   Complete Order
                     </button>
-                
+                }
 
 
-              
+
+                @if (Model.OrderDetailsVm.order.Status == ConstRoleDef.StatusReady
+                 || Model.OrderDetailsVm.order.Status == ConstRoleDef.StatusSubmitted
+                 || Model.OrderDetailsVm.order.Status == ConstRoleDef.StatusInProcess
+                 && (User.IsInRole(ConstRoleDef.ManagerRole) || User.IsInRole(ConstRoleDef.FrontDeskRole)))
+                {
                     <div class="row pt-3">
                         <div class="col-6">
                             <button type="submit" class="btn btn-warning form-control"
@@ -122,8 +130,8 @@
                             </button>
                         </div>
                     </div>
-                
 
+                }
 
             </div>
 
