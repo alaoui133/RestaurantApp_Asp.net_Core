@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Restaurant.DAL.Interfaces;
 using Restaurant.Models;
 using Restaurant.Models.ViewModels;
+using Restaurant.Utilitiy;
 
 namespace RestaurantUI.Pages.Admin.Orders
 {
@@ -27,6 +28,25 @@ namespace RestaurantUI.Pages.Admin.Orders
               
            
           
+        }
+        public async Task<IActionResult> OnPostOrderComplete(int OrderId)
+        {
+            _unitOfWork.OrderRepo.UpdateStatus(OrderId, ConstRoleDef.StatusCompleted);
+            await _unitOfWork.Save();
+            return RedirectToPage("OrderList");
+        }
+
+        public async Task<IActionResult> OnPostOrderCancel(int OrderId)
+        {
+            _unitOfWork.OrderRepo.UpdateStatus(OrderId,ConstRoleDef.StatusCancelled);
+            await _unitOfWork.Save();
+            return RedirectToPage("OrderList");
+        } 
+        public async Task<IActionResult> OnPostRefundOrder(int OrderId)
+        {
+            _unitOfWork.OrderRepo.UpdateStatus(OrderId,ConstRoleDef.StatusRefunded);
+            await _unitOfWork.Save();
+            return RedirectToPage("OrderList");
         }
     }
 }

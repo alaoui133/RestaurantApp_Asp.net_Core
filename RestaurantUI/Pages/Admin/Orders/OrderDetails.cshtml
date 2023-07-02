@@ -104,7 +104,7 @@
                 && (User.IsInRole(ConstRoleDef.ManagerRole) || User.IsInRole(ConstRoleDef.FrontDeskRole)))
                 {
                     <button type="submit" class="btn btn-info form-control"
-                        asp-page-handler="OrderConplete" asp-route-OrderId="@Model.OrderDetailsVm.order.Id">
+                        asp-page-handler="OrderComplete" asp-route-OrderId="@Model.OrderDetailsVm.order.Id">
                         <i class="fa-solid fa-check-double"></i>   Complete Order
                     </button>
                 }
@@ -119,13 +119,13 @@
                     <div class="row pt-3">
                         <div class="col-6">
                             <button type="submit" class="btn btn-warning form-control"
-                                asp-page-handler="OrderCancel" asp-route-OrderId="">
+                                asp-page-handler="OrderCancel" asp-route-OrderId="@Model.OrderDetailsVm.order.Id">
                                 <i class="fa-solid fa-ban"></i> Cancel Order
                             </button>
                         </div>
                         <div class="col-6">
                             <button type="submit" class="btn btn-danger form-control"
-                                asp-page-handler="RefundOrder" asp-route-OrderId="">
+                                asp-page-handler="RefundOrder" asp-route-OrderId="@Model.OrderDetailsVm.order.Id">
                                 <i class="fa-solid fa-hand-holding-dollar"></i> Refund Order
                             </button>
                         </div>
