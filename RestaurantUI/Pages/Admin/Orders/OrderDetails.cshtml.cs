@@ -4,6 +4,7 @@ using Restaurant.DAL.Interfaces;
 using Restaurant.Models;
 using Restaurant.Models.ViewModels;
 using Restaurant.Utilitiy;
+using Stripe;
 
 namespace RestaurantUI.Pages.Admin.Orders
 {
@@ -44,7 +45,15 @@ namespace RestaurantUI.Pages.Admin.Orders
         } 
         public async Task<IActionResult> OnPostRefundOrder(int OrderId)
         {
-            _unitOfWork.OrderRepo.UpdateStatus(OrderId,ConstRoleDef.StatusRefunded);
+            Order order = await _unitOfWork.OrderRepo.GetById(o => o.Id == OrderId);
+            var option = new RefundCreateOptions
+            {
+                Reason = RefundReasons.RequestedByCustomer,
+                PaymentIntent = order.PaymentIntentId
+            };
+            var service = new RefundService();
+            Refund refund = service.Create(option);
+            _unitOfWork.OrderRepo.UpdateStatus(OrderId, ConstRoleDef.StatusRefunded);
             await _unitOfWork.Save();
             return RedirectToPage("OrderList");
         }
