@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using NToastNotify;
 using Restaurant.DAL.Interfaces;
 using Restaurant.Models;
+using Restaurant.Utilitiy;
 using System.Security.Claims;
 
 namespace RestaurantUI.Pages.Customer.Cart
@@ -64,8 +65,13 @@ namespace RestaurantUI.Pages.Customer.Cart
             }
             else
             {
+                string userId = cart.UserId;
                 _unitOfWork.ShoppingCartRepo.remove(cart);
                 await _unitOfWork.Save();
+                // after remove item from shoppinCart
+                int count = (await _unitOfWork.ShoppingCartRepo.GetAll(
+                  o=>o.UserId == userId)).ToList().Count;
+                HttpContext.Session.SetInt32(ConstRoleDef.SessionCart, count);
             }
             
             return RedirectToPage("/Customer/Cart/Index");
@@ -76,9 +82,14 @@ namespace RestaurantUI.Pages.Customer.Cart
         {
             ShoppingCart cart = await _unitOfWork.ShoppingCartRepo.GetById(
                 c => c.Id == cartID);
+            string userId = cart.UserId;
             _unitOfWork.ShoppingCartRepo.remove(cart);
             if (await _unitOfWork.Save())
             {
+                // after remove item from shoppinCart
+                int count = (await _unitOfWork.ShoppingCartRepo.GetAll(
+                  o => o.UserId == userId)).ToList().Count;
+                HttpContext.Session.SetInt32(ConstRoleDef.SessionCart, count);
                 return RedirectToPage("/Customer/Cart/Index");
             }
             else

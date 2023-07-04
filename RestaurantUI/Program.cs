@@ -68,8 +68,20 @@ builder.Services.AddRazorPages().AddNToastNotifyToastr(new ToastrOptions()
 
 // Add service UnitOfWork (Crud Operation)
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
-
+// Mapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+// Add Sessions Services
+
+builder.Services.AddDistributedMemoryCache(); // Store Items to memory
+builder.Services.AddSession(option =>
+{
+    option.IdleTimeout = TimeSpan.FromSeconds(100);
+    option.Cookie.HttpOnly = true; //Cookie is accessible by client Side script
+    option.Cookie.IsEssential = true;// if is essential for the app to function correctly
+});
+
+
 
 
 
@@ -95,6 +107,7 @@ StripeConfiguration.ApiKey = key;
 app.UseAuthentication();;
 
 app.UseAuthorization();
+app.UseSession();   
 
 app.MapRazorPages();
 

@@ -5,6 +5,20 @@
     ViewBag.title = "Order List";
 }
 <div class="p-1">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-primary">Order List</h2>
+        </div>
+        <div class="col-6"> 
+            <ul class="list-group list-group-horizontal" style="list-style-type: none;">
+                <li><button onclick='Reload("?handler=List")' class="btn btn-outline-primary">--All--</button></li>
+                <li><button onclick='Reload("?handler=List&status=cancelled")' class="btn btn-outline-warning">cancelled</button></li>
+                <li><button onclick='Reload("?handler=List&status=completed")' class="btn btn-outline-success">completed</button></li>
+                <li><button onclick='Reload("?handler=List&status=ready")' class="btn btn-outline-info">Ready For PickUp </button></li>
+                <li><button onclick='Reload("?handler=List&status=inprocess")' class="btn btn-outline-secondary">InProcess</button></li>
+            </ul>
+        </div>
+    </div>
     <div class="col-12">
         <a class="btn btn-outline-primary mt-1 mb-2 p-1" asp-page="">
             <i class="fa-solid fa-circle-plus fa-spin"></i> Create
@@ -73,7 +87,10 @@
 
         });
 
-       
+       function Reload(UrlFilter)
+       {
+            datatable.ajax.url(UrlFilter).load();
+       }
 
     </script>
 

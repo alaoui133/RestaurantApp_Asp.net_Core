@@ -25,7 +25,7 @@ namespace RestaurantUI.Pages.Customer.Cart
                 Session session = service.Get(order.sessionId);
                 if (session.PaymentStatus.ToLower() == "paid")
                 {
-                    order.Status = ConstRoleDef.StatusCompleted;
+                    order.Status = ConstRoleDef.StatusSubmitted;
                     order.PaymentIntentId = session.PaymentIntentId;
 
                     // remove Shopping Cart
