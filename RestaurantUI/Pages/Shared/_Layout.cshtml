@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Restaurant.Utilitiy;
+@inject IHttpContextAccessor Accessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -33,7 +35,16 @@
                     <a href="#" class="nav-link">Contact</a>
                 </li>   
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a asp-page="/Customer/Cart/Index" class="nav-link"><i class="fa-solid fa-cart-plus"></i> Cart</a>
+                    <a asp-page="/Customer/Cart/Index" class="nav-link">
+                        @*   using Session
+                           <i class="fa-solid fa-cart-plus"></i>
+                        Cart(@Accessor.HttpContext.Session.GetInt32(ConstRoleDef.SessionCart))
+                        *@
+                        @* Using ViewComponent Method
+                         <ShoppingCart> Refer to ShoppingCart Folder <Default> file
+                           using ShoppingCartViewComponent.cs in ViewComponents Folder*@
+                        @await Component.InvokeAsync("ShoppingCart")
+                    </a>
                 </li>
             </ul>
 
