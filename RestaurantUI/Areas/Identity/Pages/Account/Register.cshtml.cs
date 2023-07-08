@@ -100,6 +100,7 @@ namespace RestaurantUI.Areas.Identity.Pages.Account
                 user.PhoneNumber = Input.PhoneNumber;
                 user.LastName = Input.LastName;
                 user.FirstName = Input.FirstName;
+                string FullName = user.FirstName +" " + user.LastName;
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
@@ -117,7 +118,7 @@ namespace RestaurantUI.Areas.Identity.Pages.Account
                         protocol: Request.Scheme);
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                        $" Hello <b>{FullName}<b/> <br/> Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
