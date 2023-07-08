@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pGS2dA8wzP4IweoeiwKT76EvVPCjzI9722mwM+TNMrOk/bqSdEuTL0Z6r2MUraJUZ3gbKTeUvFx0fxCFClwXdQ==",
+  "dgSpecHash": "1TTqeW79wjVxBpRJHrbckxmz/F8vUk1bhaJ1C/G0QMMfqbR7qMAZC+8TUi6UZjpBx2LVFaoioYAatWksHHs3Tw==",
   "success": true,
   "projectFilePath": "C:\\Users\\lenovo x260 N8\\source\\repos\\RestaurantApp\\RestaurantUI\\RestaurantUI.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\6.0.0\\microsoft.aspnetcore.authentication.facebook.6.0.0.nupkg.sha512",
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",
     "C:\\Users\\lenovo x260 N8\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.10\\microsoft.aspnetcore.cryptography.internal.6.0.10.nupkg.sha512",
