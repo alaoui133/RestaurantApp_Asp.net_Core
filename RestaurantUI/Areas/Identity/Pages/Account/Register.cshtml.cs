@@ -126,6 +126,10 @@ namespace RestaurantUI.Areas.Identity.Pages.Account
                     }
                     else
                     {
+                        if(User.IsInRole(ConstRoleDef.ManagerRole)) 
+                        {
+                            return RedirectToPage("/Customer/Home/Index");
+                        }
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }

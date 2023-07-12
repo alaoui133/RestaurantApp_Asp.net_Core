@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/AdminLte/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="~/lib/fontawesome/css/all.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css"  />
+    <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="~/lib/sweetalert2/sweetalert2.min.css" />
 
 </head>
@@ -33,16 +33,16 @@
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
-                </li>   
+                </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a asp-page="/Customer/Cart/Index" class="nav-link">
                         @*   using Session
-                           <i class="fa-solid fa-cart-plus"></i>
+                        <i class="fa-solid fa-cart-plus"></i>
                         Cart(@Accessor.HttpContext.Session.GetInt32(ConstRoleDef.SessionCart))
                         *@
                         @* Using ViewComponent Method
-                         <ShoppingCart> Refer to ShoppingCart Folder <Default> file
-                           using ShoppingCartViewComponent.cs in ViewComponents Folder*@
+                        <ShoppingCart> Refer to ShoppingCart Folder <Default> file
+                        using ShoppingCartViewComponent.cs in ViewComponents Folder*@
                         @await Component.InvokeAsync("ShoppingCart")
                     </a>
                 </li>
@@ -167,7 +167,7 @@
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
-                <partial name="_LoginPartial"/>
+                <partial name="_LoginPartial" />
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -247,60 +247,78 @@
                                     <span class="badge badge-info right">6</span>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/Admin/Categories/Index" class="nav-link">
-                                        <i class="fa-regular fa-list"></i>
-                                        <p>Categories</p>
-                                    </a>
-                                </li>
+                            @if (User.IsInRole(ConstRoleDef.ManagerRole))
+                            {
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a asp-area="Identity" asp-page="/Account/Register" class="nav-link">
+                                            <i class="fa-regular fa-list"></i>
+                                            <p>Register Employee</p>
+                                        </a>
+                                    </li>
 
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/Admin/FoodTypes/Index" class="nav-link">
-                                        <i class="fa-regular fa-list"></i>
-                                        <p>Food Types</p>
-                                    </a>
-                                </li>
+                                </ul>
+                                <div class="dropdown-divider"></div>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a asp-page="/Admin/Categories/Index" class="nav-link">
+                                            <i class="fa-regular fa-list"></i>
+                                            <p>Categories</p>
+                                        </a>
+                                    </li>
 
-                            </ul>
+                                </ul>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a asp-page="/Admin/FoodTypes/Index" class="nav-link">
+                                            <i class="fa-regular fa-list"></i>
+                                            <p>Food Types</p>
+                                        </a>
+                                    </li>
 
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/Admin/MenuItems/Index" class="nav-link">
-                                        <i class="fa-regular fa-list"></i>
-                                        <p>Menu Items</p>
-                                    </a>
-                                </li>
+                                </ul>
 
-                            </ul>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a asp-page="/Admin/MenuItems/Index" class="nav-link">
+                                            <i class="fa-regular fa-list"></i>
+                                            <p>Menu Items</p>
+                                        </a>
+                                    </li>
 
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/Admin/Orders/OrderList" class="nav-link">
-                                        <i class="fa-regular fa-list"></i>
-                                        <p>Orders List</p>
-                                    </a>
-                                </li>
+                                </ul>
+                            }
+                            <div class="dropdown-divider"></div>
+                            @if (User.IsInRole(ConstRoleDef.ManagerRole) || User.IsInRole(ConstRoleDef.FrontDeskRole))
+                            {
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a asp-page="/Admin/Orders/OrderList" class="nav-link">
+                                            <i class="fa-regular fa-list"></i>
+                                            <p>Orders List</p>
+                                        </a>
+                                    </li>
 
-                            </ul>
+                                </ul>
+                            }
 
 
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/Admin/Orders/OrderManager" class="nav-link">
-                                        <i class="fa-regular fa-list"></i>
-                                        <p>Manages Orders</p>
-                                    </a>
-                                </li>
+                            @if (User.IsInRole(ConstRoleDef.ManagerRole) || User.IsInRole(ConstRoleDef.KitchenRole))
+                            {
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a asp-page="/Admin/Orders/OrderManager" class="nav-link">
+                                            <i class="fa-regular fa-list"></i>
+                                            <p>Manages Orders</p>
+                                        </a>
+                                    </li>
 
-                            </ul>
-
+                                </ul>
+                            }
 
                         </li>
-                      
-                       
+
+
 
                     </ul>
                 </nav>
@@ -321,7 +339,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item">
-                                    <a href="#">Home</a>           
+                                    <a href="#">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active">@ViewBag.groupePage</li>
                             </ol>
@@ -384,7 +402,7 @@
     <!-- AdminLTE App -->
     <script src="~/AdminLte/dist/js/adminlte.min.js"></script>
     <!-- Datatables -->
-    <script src="~/lib/datatables/js/jquery.dataTables.min.js" ></script>
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
     <!-- sweetalert2 -->
     <script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
 
