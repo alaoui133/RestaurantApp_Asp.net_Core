@@ -1,0 +1,5 @@
+*.C# linguist-detectable=true
+*.Asp.net Core linguist-detectable=true
+*.JavaScript linguist-detectable=true
+*.HTML linguist-detectable=true
+*.Bootstrap linguist-detectable=true
