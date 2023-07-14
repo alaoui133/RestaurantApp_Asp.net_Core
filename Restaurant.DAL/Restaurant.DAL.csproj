@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Restaurant.Models\Restaurant.Models.csproj" />
+    <ProjectReference Include="..\Restaurant.Utilitiy\Restaurant.Utilitiy.csproj" />
   </ItemGroup>
 
 </Project>

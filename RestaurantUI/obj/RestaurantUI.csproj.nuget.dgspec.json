@@ -30,6 +30,9 @@
             "projectReferences": {
               "C:\\Users\\lenovo x260 N8\\source\\repos\\RestaurantApp\\Restaurant.Models\\Restaurant.Models.csproj": {
                 "projectPath": "C:\\Users\\lenovo x260 N8\\source\\repos\\RestaurantApp\\Restaurant.Models\\Restaurant.Models.csproj"
+              },
+              "C:\\Users\\lenovo x260 N8\\source\\repos\\RestaurantApp\\Restaurant.Utilitiy\\Restaurant.Utilitiy.csproj": {
+                "projectPath": "C:\\Users\\lenovo x260 N8\\source\\repos\\RestaurantApp\\Restaurant.Utilitiy\\Restaurant.Utilitiy.csproj"
               }
             }
           }

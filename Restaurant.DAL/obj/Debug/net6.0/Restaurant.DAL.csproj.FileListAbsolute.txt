@@ -15,3 +15,5 @@ C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6
 C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\Restaurant.DAL.pdb
 C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\Restaurant.DAL.genruntimeconfig.cache
 C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\obj\Debug\net6.0\ref\Restaurant.DAL.dll
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\bin\Debug\net6.0\Restaurant.Utilitiy.dll
+C:\Users\lenovo x260 N8\source\repos\RestaurantApp\Restaurant.DAL\bin\Debug\net6.0\Restaurant.Utilitiy.pdb

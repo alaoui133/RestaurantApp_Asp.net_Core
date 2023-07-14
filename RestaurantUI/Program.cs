@@ -10,6 +10,7 @@ using Restaurant.Models;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Restaurant.Utilitiy;
 using Stripe;
+using Restaurant.DAL.DbInitilizer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,6 +69,10 @@ builder.Services.AddRazorPages().AddNToastNotifyToastr(new ToastrOptions()
 
 // Add service UnitOfWork (Crud Operation)
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+
+// service to create  DataBase project to an other Server Or computer
+//builder.Services.AddScoped<IDbInializer, DbInializer>();
+
 // Mapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
@@ -109,6 +114,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+//
+//await SeedDatabase();
 
 string key = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 StripeConfiguration.ApiKey = key;
@@ -121,3 +128,12 @@ app.UseSession();
 app.MapRazorPages();
 
 app.Run();
+
+//async Task SeedDatabase()
+//{ 
+//    using (var scope = app.Services.CreateScope())
+//    {
+//        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInializer>();
+//        await dbInitializer.Inialize();
+//    }
+//}

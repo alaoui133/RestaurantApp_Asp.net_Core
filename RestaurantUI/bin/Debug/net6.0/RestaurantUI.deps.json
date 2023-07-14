@@ -3308,7 +3308,8 @@
           "Microsoft.AspNetCore.Identity.UI": "6.0.10",
           "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
-          "Restaurant.Models": "1.0.0"
+          "Restaurant.Models": "1.0.0",
+          "Restaurant.Utilitiy": "1.0.0"
         },
         "runtime": {
           "Restaurant.DAL.dll": {}

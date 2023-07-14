@@ -80,14 +80,7 @@ namespace RestaurantUI.Areas.Identity.Pages.Account
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            if (!await _roleManager.RoleExistsAsync(ConstRoleDef.ManagerRole) )
-            {
-                await _roleManager.CreateAsync(new IdentityRole(ConstRoleDef.ManagerRole));
-                await _roleManager.CreateAsync(new IdentityRole(ConstRoleDef.KitchenRole));
-                await _roleManager.CreateAsync(new IdentityRole(ConstRoleDef.FrontDeskRole));
-                await _roleManager.CreateAsync(new IdentityRole(ConstRoleDef.CustomerRole));
-            }
-
+            
         }
 
         public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
