@@ -1,9 +1,13 @@
 ﻿@page
 @model RestaurantUI.Pages.Admin.Dashboard.DashboardModel
+@{
+    ViewBag.groupePage = "DashBoard";
+    ViewBag.title = "DashBoard";
+}
 
 <div class="container">
     <div class="row">
-
+        <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
@@ -21,7 +25,7 @@
                 </div>
             </div>
         </div>
-
+        <!-- Earnings (in Year)  -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
@@ -40,8 +44,7 @@
             </div>
         </div>
 
-   
-
+        <!-- Orders wait action -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
@@ -53,13 +56,13 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalAprovePay.ToString()</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            <i class="fas fa-regular fa-clock fa-spin fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        <!-- Ready Orders -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
@@ -71,7 +74,7 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalReady.ToString()</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            <i class="fas fa-solid fa-check-double fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -80,3 +83,66 @@
 
     </div>
 </div>
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+<button type="submit" asp-page-handler="FetchData"> load</button>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+    const createChart = async () => {
+        try {
+
+            const chartData = {
+                labels: ['Refunded', 'Completed'],
+                datasets: [
+                    {
+                        label: 'Refunded Orders',
+                        data: [@Model.refoundcount, 0], // Use the correct key ('refunded')
+                        fill: false,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        tension: 0.1 // Set a tension value, such as 0.1, for smooth lines
+                    },
+                    {
+                        label: 'Completed Orders',
+                        data: [0, @Model.completedCount], // Use the correct key ('completed')
+                        fill: false,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        tension: 0.1 // Set a tension value, such as 0.1, for smooth lines
+                    }
+                ]
+            };
+
+            const config = {
+                type: 'line',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Chart.js Line Chart - Refunded vs. Completed Orders'
+                        }
+                    }
+                },
+            };
+
+            // Get the canvas element and create the chart
+            const ctx = document.getElementById('myChart').getContext('2d');
+            new Chart(ctx, config);
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    // Call the createChart function to initialize the chart
+    createChart();
+</script>

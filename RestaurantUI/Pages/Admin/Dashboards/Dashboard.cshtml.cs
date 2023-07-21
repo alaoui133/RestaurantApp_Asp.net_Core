@@ -9,11 +9,17 @@ namespace RestaurantUI.Pages.Admin.Dashboard
     public class DashboardModel : PageModel
     {
         private readonly IUnitOfWork _unitOfWork;
+        private object refounded;
+
         public List<OrderDetails> OrderDetails { get; set; }
         public double TotalM { get; set; }
         public double TotalY { get; set; }
         public int TotalAprovePay { get; set; }
         public int TotalReady { get; set; }
+        public int NumCompleteOrders { get; set; }
+        public int completedCount { get; set; }
+        public int refoundcount { get; set; }
+
 
 
         public DashboardModel(IUnitOfWork unitOfWork)
@@ -22,24 +28,28 @@ namespace RestaurantUI.Pages.Admin.Dashboard
         }
         public async Task OnGet()
         {
+            NumCompleteOrders = 0;
             TotalAprovePay = 0;
-            TotalReady= 0;
-            OrderDetails = (List<OrderDetails>)await _unitOfWork.OrderDetailsRepo.GetAll(includeProperties:"Order");
-           
+            TotalReady = 0;
+            OrderDetails = (List<OrderDetails>)await _unitOfWork.OrderDetailsRepo.GetAll(includeProperties: "Order");
+
             foreach (var item in OrderDetails)
             {
                 DateTime dtOrder = new DateTime();
                 dtOrder = item.Order.OrderDate;
-                if (dtOrder.Month == DateTime.Now.Month && 
-                    item.Order.Status== ConstRoleDef.StatusCompleted)
+                if (dtOrder.Month == DateTime.Now.Month &&
+                    item.Order.Status == ConstRoleDef.StatusCompleted)
                 {
                     TotalM += item.Price * item.Count;
                 }
 
-                if (dtOrder.Year == DateTime.Now.Year && 
+                if (dtOrder.Year == DateTime.Now.Year &&
                     item.Order.Status == ConstRoleDef.StatusCompleted)
                 {
                     TotalY += item.Price * item.Count;
+                    NumCompleteOrders++;
+
+
                 }
 
                 if (item.Order.Status == ConstRoleDef.StatusSubmitted)
@@ -51,9 +61,29 @@ namespace RestaurantUI.Pages.Admin.Dashboard
                 {
                     TotalReady++;
                 }
-                
-                
+                // chart
+                var refoundOrders = await _unitOfWork.OrderRepo.GetAll(
+                o => o.Status == ConstRoleDef.StatusRefunded);
+
+                refoundcount = refoundOrders.Count();
+
+                var completedOrders = await _unitOfWork.OrderRepo.GetAll(
+                       o => o.Status == ConstRoleDef.StatusCompleted);
+
+                completedCount = completedOrders.Count();
+
+
+
+
+
             }
         }
+
+
     }
 }
+
+
+
+
+
