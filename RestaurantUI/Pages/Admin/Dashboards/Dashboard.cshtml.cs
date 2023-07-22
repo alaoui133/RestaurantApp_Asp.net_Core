@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Restaurant.DAL.Interfaces;
@@ -6,6 +7,7 @@ using Restaurant.Utilitiy;
 
 namespace RestaurantUI.Pages.Admin.Dashboard
 {
+    [Authorize]
     public class DashboardModel : PageModel
     {
         private readonly IUnitOfWork _unitOfWork;

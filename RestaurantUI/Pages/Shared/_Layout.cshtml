@@ -217,26 +217,18 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/Admin/Dashboards/Dashboard" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/AdminLte/index2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/AdminLte/index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v3</p>
-                                    </a>
-                                </li>
-                            </ul>
+                            @if (User.IsInRole(ConstRoleDef.ManagerRole)
+                            || User.IsInRole(ConstRoleDef.FrontDeskRole) || User.IsInRole(ConstRoleDef.KitchenRole))
+                            {
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a asp-page="/Admin/Dashboards/Dashboard" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Dashboard</p>
+                                        </a>
+
+                                </ul>
+                            }
                         </li>
 
                         <li class="nav-item">
@@ -407,8 +399,6 @@
     <!-- sweetalert2 -->
     <script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
     <!-- chart.js -->
-   
-
     @await RenderSectionAsync("Scripts", required: false)
     @await Component.InvokeAsync("NToastNotify")
 </body>
