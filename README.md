@@ -1,1 +1,1 @@
-# RestaurantApp_Asp.net_Core
+# RestaurantApp_Asp.net_Core razor pages
